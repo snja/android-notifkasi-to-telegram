@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.kunyink.notif_tele"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 101
+        versionName "1.0.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "${variant.applicationId}.apk"
+                }
+            }
+        }
+    }
+}
+
+ext {
+    smackVersion = "4.1.6"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.github.pengrad:java-telegram-bot-api:4.4.0'
+}
+
+configurations {
+    all*.exclude group: 'xpp3', module: 'xpp3'
+}
