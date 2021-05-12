@@ -46,10 +46,13 @@ public class NotificationService extends NotificationListenerService {
         }
     }
 
+
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
+        pref = getSharedPreferences("kunyink", MODE_PRIVATE);
+        if(pref.getBoolean("enabledService", false)) {
+            return;
+        }
         Notification noti = sbn.getNotification();
         Bundle extras = noti.extras;
         String title = null;
@@ -99,7 +102,7 @@ public class NotificationService extends NotificationListenerService {
 
         try {
             ApplicationInfo appi = this.getPackageManager().getApplicationInfo(pack, 0);
-            Drawable icon = getPackageManager().getApplicationIcon(appi);
+//            Drawable icon = getPackageManager().getApplicationIcon(appi);
             pack = getPackageManager().getApplicationLabel(appi).toString();
         } catch (Exception e) {
             Log.d(TAG, e.getMessage());
@@ -131,8 +134,11 @@ public class NotificationService extends NotificationListenerService {
             }
         }
         if (conts > 0) return;
-
-        sendTelegram(title, msg, textFooter);
+        int repeat = pref.getInt("textRepeat", 1);
+        repeat = Math.max(1, repeat);
+        for(int i=0; i<repeat; i++) {
+            sendTelegram(title, msg, textFooter);
+        }
     }
 
     private void sendTelegram(String... strings) {

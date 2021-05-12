@@ -1,116 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/primaryContent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20px"
+    android:padding="10dp"
     tools:context="com.kunyink.notif_tele.MainActivity">
 
-    <LinearLayout
+    <Switch
+        android:id="@+id/serviceEnable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Service Enabled"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <ScrollView
+        android:layout_below="@id/serviceEnable"
+        android:layout_above="@id/btnCreateNotify"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/telegram_bot_token" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/telegramBotToken"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/telegramBotToken"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20px"
-            android:text="@string/telegram_chat_id" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/telegram_bot_token" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/telegramChatId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="textVisiblePassword" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/telegramChatId"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Required Text" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/telegram_chat_id" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/textRequired"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:lines="4" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textRequired"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hidden Text" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:gravity="start|top"
+                    android:hint="Text Required" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/textHidden"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:lines="5"
-            android:singleLine="false" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textHidden"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Footer Text" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:gravity="start|top"
+                    android:hint="Text Hidden" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/textFooter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:lines="5" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textFooter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <CheckBox
-            android:id="@+id/checkTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Title Message (line 1)" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:gravity="start|top"
+                    android:hint="Text Footer" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:id="@+id/btnCreateNotify"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20px"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="center"
-            android:onClick="buttonClicked"
-            android:text="save">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtRepeat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <requestFocus />
-        </Button>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:inputType="numberSigned"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Repeat"
+                    tools:text="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    </LinearLayout>
+            <CheckBox
+                android:id="@+id/checkTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Title Message (line 1)" />
 
-</ScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnCreateNotify"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="buttonClicked"
+        android:text="save">
+        <requestFocus />
+    </Button>
+
+</RelativeLayout>
